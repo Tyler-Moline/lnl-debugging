@@ -1,0 +1,97 @@
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #1e1e2c;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+h1 {
+  text-align: center;
+  font-size: 3rem;
+  color: #f0a500;
+  margin-top: 20px;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
+  list-style-type: none;
+}
+
+li {
+  margin: 30px;
+}
+
+.card {
+  width: 300px;
+  height: 400px;
+  perspective: 1000px;
+  transition: transform 0.6s ease-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.card-front {
+  background-color: #292946;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #f0a500;
+  box-shadow: 0 4px 10px rgba(240, 165, 0, 0.7);
+}
+
+.card-back {
+  background-color: #3a3a5e;
+  transform: rotateY(180deg);
+  padding: 15px;
+  border: 2px solid #f0a500;
+  box-shadow: 0 4px 10px rgba(240, 165, 0, 0.7);
+}
+
+.card-front img {
+  width: 150px;
+  margin-bottom: 15px;
+}
+
+.card-front h2 {
+  font-size: 1.5rem;
+}
+
+.card-back ul {
+  text-align: left;
+  padding-left: 10px;
+}
+
+.card-back ul li {
+  margin: 5px 0;
+}
