@@ -5,8 +5,8 @@ import PokemonListwBugs from "./components/PokeListwBugs";
 function App() {
   return (
     <>
-      <PokemonList />
-      {/* <PokemonListwBugs /> */}
+      {/* <PokemonList /> */}
+      <PokemonListwBugs />
     </>
   );
 }
