@@ -24,7 +24,6 @@ const PokemonListwBugs = () => {
           })
         );
 
-        setPokemon(detailedPokemon);
         setLoading(false);
       } catch (err) {
         setError(err.message || "Something went wrong.");
@@ -39,29 +38,41 @@ const PokemonListwBugs = () => {
   if (error) return <p>{error}</p>;
 
   return (
-    <div>
+    <div className="pokemon-container">
       <h1>Pokémon List</h1>
-      <ul>
+      <ul className="pokemon-list">
         {pokemon.map((poke) => (
-          <li>
-            <h2>{poke.name}</h2>
-            <img
-              src={poke.sprites.other["official-artwork"].front_default}
-              alt={poke.name}
-            />
-            <p>Type(s): {poke.types.map((t) => t.type.name).join(", ")}</p>
-            <p>
-              Abilities: {poke.abilities.map((a) => a.ability.name).join(", ")}
-            </p>
-            <p>Moves: {poke.moves.map((m) => m.move.name).join(", ")}</p>
-            <p>Stats:</p>
-            <ul>
-              {poke.stats.map((st) => (
-                <li>
-                  {st.stat.nmae}: {st.base_stat}{" "}
-                </li>
-              ))}
-            </ul>
+          <li className="card scroll-fade">
+            <div className="card-inner">
+              <div className="card-front">
+                <img
+                  src={poke.sprites.other["official-artwork"].front_default}
+                  alt={poke.name}
+                  className="pokemon-image"
+                />
+                <h2 className="pokemon-name">{poke.name}</h2>
+              </div>
+              <div className="card-back">
+                <p className="pokemon-type">
+                  Type(s): {poke.types.map((t) => t.type.name).join(", ")}
+                </p>
+                <p className="pokemon-abilities">
+                  Abilities:{" "}
+                  {poke.abilities.map((a) => a.ability.name).join(", ")}
+                </p>
+                <p className="pokemon-moves">
+                  Moves: {poke.moves.map((m) => m.move.name).join(", ")}
+                </p>
+                <p className="pokemon-stats">Stats:</p>
+                <ul className="pokemon-stats-list">
+                  {poke.stats.map((st) => (
+                    <li key={st.stat.name} className="pokemon-stat">
+                      {st.stat.nmae}: {st.base_stat}{" "}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </li>
         ))}
       </ul>
